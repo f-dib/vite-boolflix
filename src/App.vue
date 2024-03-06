@@ -1,5 +1,5 @@
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 import {store} from './store.js';
 
 import AppHeader from './components/AppHeader.vue';
@@ -12,6 +12,19 @@ export default {
         store
       }
     },
+    created() {
+      axios.get('https://api.themoviedb.org/3/movie/popular?language=it-IT&page=1&api_key=e99307154c6dfb0b4750f6603256716d').then(res => {
+
+        this.store.popularFilm = res.data.results
+
+        axios.get('https://api.themoviedb.org/3/tv/popular?language=it-IT&page=1&api_key=e99307154c6dfb0b4750f6603256716d').then(res2 => {
+        this.store.popularSeries = res2.data.results
+        
+      })
+    }).catch(err => {
+      console.log(err)
+    })
+    },
     components: {
       AppHeader,
       AppMain
@@ -20,7 +33,7 @@ export default {
 </script>
 
 <template>
-    <AppHeader></AppHeader>
+    <AppHeader @search="searchFilm()"></AppHeader>
     <AppMain></AppMain>
 </template>
 

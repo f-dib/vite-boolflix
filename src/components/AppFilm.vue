@@ -1,11 +1,21 @@
 <script>
+import {store} from '../store.js';
+
 export default {
-    name: 'AppFilm'
+    name: 'AppFilm',
+
+    data(){
+        return {
+            store
+        }
+    }
 }
 </script>
 
 <template>
-    <p>ciao</p>
+    <ul>
+        <li v-for="currentElement in store.popularFilm">{{ currentElement.title }}</li>
+    </ul>
 </template>
 
 <style lang="scss">
