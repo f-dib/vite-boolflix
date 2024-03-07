@@ -14,7 +14,32 @@ export default {
             return `https://image.tmdb.org/t/p/w342${currentElement}`;
         },
         movieFlag(currentElement){
-                return `https://flagcdn.com/16x12/${currentElement}.png`;
+
+            let flag = currentElement
+
+            switch(currentElement){
+            case "ja":
+                flag = "jp";
+                break;
+            case "en":
+                flag = "us";
+                break;
+            case "ko":
+                flag = "kr";
+                break;
+            case "da":
+                flag = "dk";
+                break;
+            case "zh":
+                flag = "cn";
+                break;
+            case "uk":
+                flag = "gb"
+                break;
+            default:
+            }
+            return `https://flagcdn.com/16x12/${flag}.png`;
+            
         },
         rating(currentElement){
             let ratingStar = Math.round(currentElement / 2);

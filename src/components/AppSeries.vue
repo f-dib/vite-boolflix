@@ -14,7 +14,32 @@ export default {
             return `https://image.tmdb.org/t/p/w342${currentElement}`;
         },
         seriesFlag(currentElement){
-                return `https://flagcdn.com/16x12/${currentElement}.png`;
+            let flag = currentElement
+
+            switch(currentElement){
+            case "ja":
+                flag = "jp";
+                break;
+            case "en":
+                flag = "us";
+                break;
+            case "ko":
+                flag = "kr";
+                break;
+            case "da":
+                flag = "dk";
+                break;
+            case "zh":
+                flag = "cn";
+                break;
+            case "uk":
+                flag = "gb"
+                break;
+            default:
+            }
+            
+            return `https://flagcdn.com/16x12/${flag}.png`;
+
         },
         rating(currentElement){
             let ratingStar = Math.round(currentElement / 2);
@@ -34,7 +59,7 @@ export default {
 
 <template>
     <h2 class="ms-2 mb-3">SERIE TV</h2>
-    <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap mb-5">
         <div class="my_grid m-auto position-relative" v-for="currentElement in store.popularSeries">
             <img  class="my_img-fluid" :src="seriesImg(currentElement.poster_path)" alt="">
 
