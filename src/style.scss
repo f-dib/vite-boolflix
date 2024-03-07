@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: white;
+  background-color: black;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,6 +19,6 @@
   box-sizing: border-box;
 }
 
-.color{
-  color: red;
+.my_grid{
+  width: calc(100% / 5 - 5px / 5 * 4);
 }

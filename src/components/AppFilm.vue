@@ -8,14 +8,27 @@ export default {
         return {
             store
         }
+    },
+    methods: {
+        movieImg(currentElement){
+            return `https://image.tmdb.org/t/p/w342${currentElement}`;
+        },
+        movieFlag(currentElement){
+                return `https://flagcdn.com/16x12/${currentElement}.png`;
+        }
     }
 }
 </script>
 
 <template>
-    <ul>
-        <li v-for="currentElement in store.popularFilm">{{ currentElement.title }}</li>
-    </ul>
+    <h2 class="ms-2 mb-3">FILM</h2>
+    <div class="d-flex flex-wrap mb-5">
+        <div class="my_grid m-auto" v-for="currentElement in store.popularFilm">
+            <img class="img-fluid" :src="movieImg(currentElement.poster_path)" alt="">
+            <div>{{ currentElement.title }}</div>
+            <div><img :src="movieFlag(currentElement.original_language)" alt=""></div>
+        </div>
+    </div>
 </template>
 
 <style lang="scss">

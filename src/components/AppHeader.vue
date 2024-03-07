@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar bg-body-tertiary mb-5">
         <div class="container-fluid">
             <a class="navbar-brand">Navbar</a>
             <div class="d-flex" role="search">

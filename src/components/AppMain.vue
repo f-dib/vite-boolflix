@@ -13,8 +13,7 @@ export default {
 </script>
 
 <template>
-    <div class="color">
-        <h1 class="text-center">ciao</h1>
+    <div>
         <AppFilm></AppFilm>
         <AppSeries></AppSeries>
     </div>
