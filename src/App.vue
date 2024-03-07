@@ -51,10 +51,15 @@ export default {
 </script>
 
 <template>
-    <AppHeader @search="searchFilm()"></AppHeader>
-    <AppMain></AppMain>
+    <div class="my_page">
+      <AppHeader @search="searchFilm()"></AppHeader>
+      <AppMain></AppMain>
+    </div>
 </template>
 
 <style lang="scss">
-
+    .my_page{
+        padding-top: 120px;
+        background-color: black;
+    }
 </style>

@@ -1,3 +1,44 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: black;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scroll bar stylings */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--lightestgrey); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #dc1a28; 
+}
+
+input::placeholder {
+  color: rgb(107, 107, 107) !important;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +48,8 @@
 .my_grid{
   width: calc(100% / 5 - 5px / 5 * 4);
   
+  transition: all 0.3s ease-in-out;
+
   .my_img-fluid{
     width: 100%;
     height: auto;
@@ -43,6 +86,12 @@
       }
   }
   }
+}
+
+.my_grid:hover {
+  transform: scale(1.1);
+
+  z-index: 2;
 }
 
 .my_grid:hover .my_overlay{

@@ -39,7 +39,7 @@ export default {
             default:
             }
             return `https://flagcdn.com/16x12/${flag}.png`;
-            
+
         },
         rating(currentElement){
             let ratingStar = Math.round(currentElement / 2);
@@ -58,7 +58,7 @@ export default {
 </script>
 
 <template>
-    <h2 class="ms-2 mb-3">FILM</h2>
+    <h2 class="ms-2 mb-3 text-white">FILM</h2>
     <div class="d-flex flex-wrap mb-5">
         <div class="my_grid m-auto position-relative" v-for="currentElement in store.popularFilm">
             <img class="my_img-fluid" :src="movieImg(currentElement.poster_path)" alt="">
@@ -69,8 +69,8 @@ export default {
                     <span class="pe-2 fw-bold">Overview:</span>
                     <span class="small my_truncate">{{ currentElement.overview }}</span>
                 </div>
-                <div><img :src="movieFlag(currentElement.original_language)" alt=""></div>
-                <div><i v-for="(star, index) in rating(currentElement.vote_average)" :key="index"><i v-bind:class="star.class"></i></i></div>
+                <div><span class="pe-2 fw-bold">Nazione:</span> <img :src="movieFlag(currentElement.original_language)" alt=""></div>
+                <div><span class="pe-2 fw-bold">Valutazione:</span> <i v-for="(star, index) in rating(currentElement.vote_average)" :key="index"><i v-bind:class="star.class"></i></i></div>
             </div>
         </div>
     </div>

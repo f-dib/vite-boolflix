@@ -37,7 +37,7 @@ export default {
                 break;
             default:
             }
-            
+
             return `https://flagcdn.com/16x12/${flag}.png`;
 
         },
@@ -58,19 +58,19 @@ export default {
 </script>
 
 <template>
-    <h2 class="ms-2 mb-3">SERIE TV</h2>
+    <h2 class="ms-2 mb-3 text-white">SERIE TV</h2>
     <div class="d-flex flex-wrap mb-5">
         <div class="my_grid m-auto position-relative" v-for="currentElement in store.popularSeries">
             <img  class="my_img-fluid" :src="seriesImg(currentElement.poster_path)" alt="">
 
             <div class="position-absolute my_overlay text-white p-2 d-flex flex-column justify-content-center">
-                <div>{{ currentElement.name }}</div>
+                <div><span class="pe-2 fw-bold">Titolo:</span> {{ currentElement.name }}</div>
                 <div v-if="currentElement.overview.length > 0" class="my_overview">
                     <span class="pe-2 fw-bold">Overview:</span>
                     <span class="small my_truncate">{{ currentElement.overview }}</span>
                 </div>
-                <div><img :src="seriesFlag(currentElement.original_language)" alt=""></div>
-                <div><i v-for="(star, index) in rating(currentElement.vote_average)" :key="index"><i v-bind:class="star.class"></i></i></div>
+                <div><span class="pe-2 fw-bold">Nazione:</span> <img :src="seriesFlag(currentElement.original_language)" alt=""></div>
+                <div><span class="pe-2 fw-bold">Valutazione:</span> <i v-for="(star, index) in rating(currentElement.vote_average)" :key="index"><i v-bind:class="star.class"></i></i></div>
             </div>
         </div>
     </div>
