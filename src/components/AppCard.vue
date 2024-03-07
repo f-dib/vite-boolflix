@@ -2,7 +2,11 @@
 import {store} from '../store.js';
 
 export default {
-    name: 'AppFilm',
+    name: 'AppCard',
+
+    props: {
+        card: Object,
+    },
 
     data(){
         return {
@@ -58,20 +62,17 @@ export default {
 </script>
 
 <template>
-    <h2 class="ms-2 mb-3 text-white">FILM</h2>
-    <div class="d-flex flex-wrap mb-5">
-        <div class="my_grid m-auto position-relative" v-for="currentElement in store.popularFilm">
-            <img class="my_img-fluid" :src="movieImg(currentElement.poster_path)" alt="">
-            
-            <div class="position-absolute my_overlay text-white p-2 d-flex flex-column justify-content-center">
-                <div><span class="pe-2 fw-bold">Titolo:</span> {{ currentElement.title }}</div>
-                <div v-if="currentElement.overview.length > 0" class="my_overview">
-                    <span class="pe-2 fw-bold">Overview:</span>
-                    <span class="small my_truncate">{{ currentElement.overview }}</span>
-                </div>
-                <div><span class="pe-2 fw-bold">Nazione:</span> <img :src="movieFlag(currentElement.original_language)" alt=""></div>
-                <div><span class="pe-2 fw-bold">Valutazione:</span> <i v-for="(star, index) in rating(currentElement.vote_average)" :key="index"><i v-bind:class="star.class"></i></i></div>
+    <div  class="my_grid p-0 position-relative col-3">
+        <img class="my_img-fluid" :src="movieImg(card.poster_path)" alt="">
+        
+        <div class="position-absolute my_overlay text-white p-2 d-flex flex-column justify-content-center">
+            <div><span class="pe-2 fw-bold">Titolo:</span> {{ card.title ? card.title : card.name }} </div>
+            <div v-if="card.overview.length > 0" class="my_overview">
+                <span class="pe-2 fw-bold">Overview:</span>
+                <span class="small my_truncate">{{ card.overview }}</span>
             </div>
+            <div><span class="pe-2 fw-bold">Nazione:</span> <img :src="movieFlag(card.original_language)" alt=""></div>
+            <div><span class="pe-2 fw-bold">Valutazione:</span> <i v-for="(star, index) in rating(card.vote_average)" :key="index"><i v-bind:class="star.class"></i></i></div>
         </div>
     </div>
 </template>

@@ -1,21 +1,32 @@
 <script>
-import AppFilm from './AppFilm.vue';
-import AppSeries from './AppSeries.vue';
+import {store} from '../store.js';
+
+import AppCard from './AppCard.vue';
 
 export default {
     name: 'AppMain',
-
+    
+    data(){
+        return {
+            store
+        }
+    },
     components: {
-        AppFilm,
-        AppSeries
+        AppCard
     }
 }
 </script>
 
 <template>
     <div>
-        <AppFilm></AppFilm>
-        <AppSeries></AppSeries>
+        <div class="row mb-5">
+            <div class="col-12 text-white ms-2"><h2>FILM</h2></div>
+            <AppCard v-for="currentFilm in store.popularFilm" :card="currentFilm"></AppCard>
+        </div>
+        <div class="row mb-5">
+            <div class="col-12 text-white ms-2"><h2>SERIE TV</h2></div>
+            <AppCard v-for="currentSerie in store.popularSeries" :card="currentSerie"></AppCard>
+        </div>
     </div>
 </template>
 
