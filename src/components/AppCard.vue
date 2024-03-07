@@ -62,7 +62,7 @@ export default {
 </script>
 
 <template>
-    <div  class="my_grid p-0 position-relative col-3">
+    <div class="my_grid p-0 position-relative col-3 m-1">
         <img class="my_img-fluid" :src="movieImg(card.poster_path)" alt="">
         
         <div class="position-absolute my_overlay text-white p-2 d-flex flex-column justify-content-center">

@@ -18,13 +18,14 @@ export default {
 </script>
 
 <template>
-    <div>
-        <div class="row mb-5">
-            <div class="col-12 text-white ms-2"><h2>FILM</h2></div>
+    <div class="overflow-x-hidden">
+        <div class="text-white ms-2 m-3"><h2>FILM</h2></div>
+        <div class="row flex-nowrap ps-4 pe-4 mb-5 overflow-x-auto overflow-y-hidden">
             <AppCard v-for="currentFilm in store.popularFilm" :card="currentFilm"></AppCard>
         </div>
-        <div class="row mb-5">
-            <div class="col-12 text-white ms-2"><h2>SERIE TV</h2></div>
+
+        <div class="text-white ms-2 m-3"><h2>SERIE TV</h2></div>
+        <div class="row flex-nowrap ps-4 pe-4 mb-5 overflow-x-auto overflow-y-hidden">     
             <AppCard v-for="currentSerie in store.popularSeries" :card="currentSerie"></AppCard>
         </div>
     </div>
