@@ -28,7 +28,10 @@ export default {
 
 <style>
     .popup {
-        position: absolute;
+        width: 60vw;
+        height: 50vh;
+        
+        position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%); 

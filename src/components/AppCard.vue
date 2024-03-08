@@ -64,9 +64,11 @@ export default {
         },
         openPopup() {
             this.showPopup = true;
+            document.body.style.overflow = 'hidden';
         },
         closePopup() {
             this.showPopup = false;
+            document.body.style.overflow = 'auto';
         }
     }
 }
@@ -86,7 +88,7 @@ export default {
             <div><span class="pe-2 fw-bold">Valutazione:</span> <i v-for="(star, index) in rating(card.vote_average)" :key="index"><i v-bind:class="star.class"></i></i></div>
         </div>
     </div>
-    <AppPopup v-if="showPopup" :cardData="card" @onClose="closePopup()" />
+    <AppPopup v-if="showPopup" :cardData="card" @onClose="closePopup()" :position="{ top: '50%', left: '50%' }" />
 </template>
 
 <style lang="scss">
