@@ -9,37 +9,64 @@ export default {
             store
         }
     },
-
     props: {
         cardData: Object,
+    },
+    methods: {
+        posterImg(currentElement){
+            return `https://image.tmdb.org/t/p/w1280${currentElement}`;
+        }
     }
 };
 </script>
 
 <template>
     <div class="popup d-flex justify-content-center align-items-center fixed-center bg-transparent">
-        <div class="card p-4 bg-white position-relative">
-            <button type="button" class="btn-close position-absolute my_close" @click="$emit('onClose')"></button>
-            <h5 class="card-title">{{ cardData.title ? cardData.title : cardData.name }}</h5>
-            <p class="card-text">{{ cardData.overview }}</p>
+        <div class="card bg-black text-white position-relative">
+            <button type="button" class="btn text-white position-absolute my_close" @click="$emit('onClose')"><i class="fa-solid fa-x"></i></button>
+            <div class="w-100 h-50">
+                <img class="my_backdrop" :src="posterImg(cardData.backdrop_path)" alt="">
+            </div>
+            <div class="p-4">
+                <h5 class="card-title">{{ cardData.title ? cardData.title : cardData.name }}</h5>
+                <p class="card-text">{{ cardData.overview }}</p>
+            </div>
         </div>
     </div>
 </template>
 
 <style>
     .popup {
-        width: 60vw;
-        height: 50vh;
-        
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%); 
         z-index: 20; 
+
+        .card{
+            min-width: 55vw;
+            min-height: 85vh;
+            max-width: 55vw;
+            max-height: 85vh;
+            box-shadow: 0px 0px 10px gray;
+            overflow: auto;
+
+            .my_close{
+                top: 10px;
+                right: 10px;
+            }
+
+            .my_close:hover {
+                color: #dc1a28 !important;
+            }
+
+            .my_backdrop {
+                width: 100%;
+                object-fit: cover;
+            }
+
+        }
     }
 
-    .my_close{
-        top: 10px;
-        right: 10px;
-    }
+
 </style>

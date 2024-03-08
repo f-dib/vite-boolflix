@@ -75,20 +75,21 @@ export default {
 </script>
 
 <template>
-    <div class="my_grid p-0 position-relative col-3 m-1" @click="openPopup">
+    <div class="my_grid p-0 position-relative col-2 m-1" @click="openPopup">
         <img class="my_img-fluid" :src="movieImg(card.poster_path)" alt="">
         
         <div class="position-absolute my_overlay text-white p-2 d-flex flex-column justify-content-center">
             <div><span class="pe-2 fw-bold">Titolo:</span> {{ card.title ? card.title : card.name }} </div>
-            <div v-if="card.overview.length > 0" class="my_overview">
+            <div v-if="card.overview.length > 0" class="my_overview text-truncate">
                 <span class="pe-2 fw-bold">Descrizione:</span>
                 <span class="small">{{ card.overview }}</span>
             </div>
             <div><span class="pe-2 fw-bold">Nazione:</span> <img :src="movieFlag(card.original_language)" alt=""></div>
             <div><span class="pe-2 fw-bold">Valutazione:</span> <i v-for="(star, index) in rating(card.vote_average)" :key="index"><i v-bind:class="star.class"></i></i></div>
+            <div><h6 class="text-uppercase text-center mt-5">scopri di più</h6></div>
         </div>
     </div>
-    <AppPopup v-if="showPopup" :cardData="card" @onClose="closePopup()" :position="{ top: '50%', left: '50%' }" />
+    <AppPopup v-if="showPopup" :cardData="card" @onClose="closePopup()" />
 </template>
 
 <style lang="scss">
