@@ -1,4 +1,6 @@
 <script>
+import axios from 'axios';
+
 import {store} from '../store.js';
 import AppPopup from './AppPopup.vue';
 
@@ -65,10 +67,20 @@ export default {
         openPopup() {
             this.showPopup = true;
             document.body.style.overflow = 'hidden';
+
+            axios.get(`https://api.themoviedb.org/3/movie/${this.card.id}/credits?language=it-IT?&api_key=e99307154c6dfb0b4750f6603256716d`).then(res3 => {
+
+                this.store.cast = res3.data.cast.slice(0, 6)
+                console.log(this.store.cast)
+
+            }).catch(err => {
+            console.log(err)
+            })
         },
         closePopup() {
             this.showPopup = false;
             document.body.style.overflow = 'auto';
+            this.store.cast = ''
         }
     }
 }
