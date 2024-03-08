@@ -16,7 +16,7 @@
 /* Scroll bar stylings */
 ::-webkit-scrollbar {
   width: 8px;
-  height: 8px;
+  height: 4px;
 }
 
 /* Track */
@@ -73,16 +73,7 @@ input::placeholder {
       aspect-ratio: 1 / 1;
 
       overflow: hidden;
-
-
-
-      .my_truncate {
-          -webkit-line-clamp: 10;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-      }
-  }
+    }
   }
 }
 

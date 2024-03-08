@@ -19,7 +19,7 @@ export default {
             <div class="d-flex">
                 <div class="my_avatar me-4"><img class="img-fluid" src="/public/img/Netflix-avatar.png" alt=""></div>
                 <div class="d-flex" role="search">
-                    <input class="form-control me-1 bg-black" type="search" placeholder="Search" aria-label="Search" v-model="store.searchText" @keyup.enter="$emit('search')">
+                    <input class="form-control me-1 bg-black text-white" type="search" placeholder="Search" aria-label="Search" v-model="store.searchText" @keyup.enter="$emit('search')">
                     <button @click="$emit('search')" class="btn text-white" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </div>
