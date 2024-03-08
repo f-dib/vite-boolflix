@@ -70,7 +70,7 @@ export default {
 
             axios.get(`https://api.themoviedb.org/3/movie/${this.card.id}/credits?language=it-IT?&api_key=e99307154c6dfb0b4750f6603256716d`).then(res3 => {
 
-                this.store.cast = res3.data.cast.slice(0, 6)
+                this.store.cast = res3.data.cast.slice(0, 5)
                 console.log(this.store.cast)
 
             }).catch(err => {

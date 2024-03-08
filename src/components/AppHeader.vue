@@ -1,4 +1,6 @@
 <script>
+import axios from 'axios';
+
 import {store} from '../store.js';
 
 export default {
@@ -8,6 +10,38 @@ export default {
         return {
             store
         }
+    },
+    methods: {
+        handleSearchInput() {
+            
+            this.$emit('search');
+
+            
+            if (this.store.searchText.trim() === '') {
+                this.getDefaultMovies();
+            }
+        },
+        clearSearchInput() {
+        
+            this.store.searchText = '';
+            this.$emit('search');
+            },
+            getDefaultMovies() {
+            axios.get('https://api.themoviedb.org/3/movie/popular?language=it-IT&page=1&api_key=e99307154c6dfb0b4750f6603256716d').then((res) => {
+                
+                this.store.popularFilm = res.data.results;
+                console.log(this.store.popularFilm);
+
+                axios.get('https://api.themoviedb.org/3/tv/popular?language=it-IT&page=1&api_key=e99307154c6dfb0b4750f6603256716d').then((res2) => {
+                this.store.popularSeries = res2.data.results;
+                console.log(this.store.popularSeries);
+                
+            })
+            })
+            .catch((err) => {
+            console.log(err);
+            });
+        } 
     }
 }
 </script>
@@ -19,7 +53,7 @@ export default {
             <div class="d-flex">
                 <div class="my_avatar me-4"><img class="img-fluid" src="/public/img/Netflix-avatar.png" alt=""></div>
                 <div class="d-flex" role="search">
-                    <input class="form-control me-1 bg-black text-white" type="search" placeholder="Search" aria-label="Search" v-model="store.searchText" @keyup.enter="$emit('search')">
+                    <input class="form-control me-1 bg-black text-white" type="search" placeholder="Search" aria-label="Search" v-model="store.searchText" @keyup.enter="$emit('search')" @keyup="handleSearchInput">
                     <button @click="$emit('search')" class="btn text-white" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </div>

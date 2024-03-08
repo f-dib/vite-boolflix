@@ -32,7 +32,7 @@ export default {
                 <p class="small"><span class="fw-bold me-2">Titolo Originale:</span>{{ cardData.original_title ? cardData.original_title : cardData.original_name }}</p>
                 <p class="text-truncate" v-if="store.cast.length > 0">
                     <span class="fw-bold me-2">Cast:</span>
-                    <span class="me-2" v-for="castMember in store.cast">{{ castMember.name }}, </span>
+                    <span class="me-2" v-for="castMember in store.cast">{{ castMember.name }}</span>
                 </p>
                 <p class="card-text" v-if="cardData.overview.length > 0"><span class="fw-bold me-2">Descrizione:</span>{{ cardData.overview }}</p>
             </div>
