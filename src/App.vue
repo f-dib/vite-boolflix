@@ -26,6 +26,15 @@ export default {
         })
     }).catch(err => {
       console.log(err)
+    });
+
+    axios.get('https://api.themoviedb.org/3/genre/movie/list?language=it&api_key=e99307154c6dfb0b4750f6603256716d').then(res3 => {
+        this.store.genre = res3.data.genres
+
+        axios.get('https://api.themoviedb.org/3/genre/tv/list?language=it&api_key=e99307154c6dfb0b4750f6603256716d').then(res4 => {
+            this.store.totalGenre = this.store.genre.concat(res4.data.genres)
+            console.log(this.store.totalGenre)
+        })
     })
     },
     components: {

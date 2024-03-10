@@ -36,7 +36,7 @@ export default {
                 this.store.popularSeries = res2.data.results;
                 console.log(this.store.popularSeries);
                 
-            })
+                })
             })
             .catch((err) => {
             console.log(err);

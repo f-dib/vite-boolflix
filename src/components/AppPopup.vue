@@ -15,6 +15,10 @@ export default {
     methods: {
         posterImg(currentElement){
             return `https://image.tmdb.org/t/p/w1280${currentElement}`;
+        },
+        getGenreName(genreid) {
+            const matchingGenre = store.totalGenre.find(genre => genre.id === genreid);
+            return matchingGenre ? matchingGenre.name : "";
         }
     }
 };
@@ -30,6 +34,7 @@ export default {
             <div class="p-4">
                 <h5 class="card-title">{{ cardData.title ? cardData.title : cardData.name }}</h5>
                 <p class="small"><span class="fw-bold me-2">Titolo Originale:</span>{{ cardData.original_title ? cardData.original_title : cardData.original_name }}</p>
+                <p class="d-flex"><span class="fw-bold me-2">Genere:</span><span v-for="genreId in store.genreId" class="me-2">{{ getGenreName(genreId) }}</span></p>
                 <p class="text-truncate" v-if="store.cast.length > 0">
                     <span class="fw-bold me-2">Cast:</span>
                     <span class="me-2" v-for="castMember in store.cast">{{ castMember.name }}</span>

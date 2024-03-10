@@ -5,6 +5,9 @@ export const store = reactive ({
     popularFilm: [],
     popularSeries: [],
     searchText: '',
-    cast: ''
+    cast: '',
+    genre: '',
+    genreId: '',
+    totalGenre: ''
 
 });
