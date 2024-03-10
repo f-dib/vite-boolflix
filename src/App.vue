@@ -9,7 +9,8 @@ export default {
 
     data(){
       return {
-        store
+        store,
+        isLoading: true
       }
     },
     created() {
@@ -55,18 +56,46 @@ export default {
             })
         })
       }
+    },
+    mounted() {
+
+      setTimeout(() => {
+          this.isLoading = false;
+        }, 2000);
+
     }
 }
 </script>
 
 <template>
-    <div class="my_page">
+    <div id="splash-page" v-if="isLoading">
+        <div class="d-flex flex-column justify-content-center align-items-center h-100">
+            <img class="pb-5" src="../public/img/logo.png" alt="">
+            <div class="spinner-border my_color mt-5" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div> 
+
+    <div v-else class="my_page">
       <AppHeader @search="searchFilm()"></AppHeader>
       <AppMain></AppMain>
     </div>
 </template>
 
 <style lang="scss">
+    #splash-page{
+      width: 100vw;
+      height: 100vh;
+
+      color: #dc1a28;
+      background-color: black;
+
+      .my_color{
+        color: #dc1a28 !important;
+      }
+    }
+
     .my_page{
         padding-top: 120px;
         background-color: black;
